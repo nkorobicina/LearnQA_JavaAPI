@@ -15,7 +15,7 @@ public class HomeWork7 {
         int answerCode = 301;
         String keyUrl = "https://playground.learnqa.ru/api/long_redirect";
         Response response;
-
+        int i = 0;
         while(answerCode == 301) {
             response = RestAssured
                     .given()
@@ -28,12 +28,18 @@ public class HomeWork7 {
             if(keyUrl != null)
             {
                 locationList.add(keyUrl);
+                i++;
             }
         }
 
+       if(answerCode != 200) {
+            System.out.println("На последнем редиректе не получен код 200, код ответа: " + answerCode);
+        }
+        else
+        {
+            System.out.println("На последнем редиректе получен код 200, количество итераций: " + i);
+        }
+
         System.out.println(locationList);
-
-
-
     }
 }

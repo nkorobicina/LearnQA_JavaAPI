@@ -42,7 +42,7 @@ public class ApiCoreRequests {
                 .andReturn();
     }
 
-    @Step("Make a post request with token only")
+    @Step("Make a post request")
     public Response makePostRequest(String url, Map<String, String> authData) {
         return given()
                 .filter(new AllureRestAssured())

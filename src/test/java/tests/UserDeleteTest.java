@@ -39,8 +39,6 @@ public class UserDeleteTest extends BaseTestCase {
                                 responseGetAuth.getCookie("auth_sid")
                         );
 
-        System.out.println(responseDeleteUser.asString());
-        System.out.println(responseDeleteUser.statusCode());
 
         Assertions.assertResponseCodeEquals(responseDeleteUser, 400);
         Assertions.assertResponseTextEquals(responseDeleteUser, "Please, do not delete test users with ID 1, 2, 3, 4 or 5.");

@@ -1,8 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import lib.Assertions;
@@ -24,6 +22,9 @@ public class UserDeleteTest extends BaseTestCase {
     @Test
     @Description("This test try to delete protected user")
     @DisplayName("Test negative. Delete protected user")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://software-testing.ru/lms/mod/assign/view.php?id=289484")
+    @Story("Negative delete user")
     public void testDeleteProtectedUser() {
         Map<String,String> authData = new HashMap<>();
         authData.put("email", "vinkotov@example.com");
@@ -48,6 +49,9 @@ public class UserDeleteTest extends BaseTestCase {
     @Test
     @Description("This test successfully create user and delete")
     @DisplayName("Test positive delete user")
+    @Severity(SeverityLevel.CRITICAL)
+    @Link("https://software-testing.ru/lms/mod/assign/view.php?id=289484")
+    @Story("Positive delete user")
     public void testDeleteUser() {
         //Generate user
         Map<String, String> userData = DataGenerator.getRegistrationData();
@@ -89,6 +93,9 @@ public class UserDeleteTest extends BaseTestCase {
     @Test
     @Description("This test successfully create user, create second user and delete")
     @DisplayName("Test negative. Delete other user")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://software-testing.ru/lms/mod/assign/view.php?id=289484")
+    @Story("Probably a bug")
     public void testDeleteOtherUser() {
         //Generate user 1 for login
         Map<String, String> user1Data = DataGenerator.getRegistrationData();

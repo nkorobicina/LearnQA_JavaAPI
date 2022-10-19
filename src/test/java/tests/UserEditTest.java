@@ -1,8 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import lib.Assertions;
@@ -24,6 +22,9 @@ public class UserEditTest extends BaseTestCase {
     @Test
     @Description("This test successfully create and edit user")
     @DisplayName("Test positive edit user")
+    @Severity(SeverityLevel.CRITICAL)
+    @Link("https://software-testing.ru/lms/mod/url/view.php?id=289472")
+    @Story("Positive edit user")
     public void testEditJustCreatedTest() {
         //Generate user
         Map<String, String> userData = DataGenerator.getRegistrationData();
@@ -64,6 +65,9 @@ public class UserEditTest extends BaseTestCase {
     @Test
     @Description("This test try to edit user while not authorized")
     @DisplayName("Test negative edit user. Not Authorized")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://software-testing.ru/lms/mod/assign/view.php?id=289483")
+    @Story("Negative edit user")
     public void testEditNotAuthTest() {
 
         //edit
@@ -85,6 +89,9 @@ public class UserEditTest extends BaseTestCase {
     @Test
     @Description("This test successfully create and try to edit other user")
     @DisplayName("Test negative. Edit other user")
+    @Story("Probably a bug")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://software-testing.ru/lms/mod/assign/view.php?id=289483")
     public void testEditOtherUser() {
         //Generate user 1 for login
         Map<String, String> user1Data = DataGenerator.getRegistrationData();
@@ -143,6 +150,9 @@ public class UserEditTest extends BaseTestCase {
     @Test
     @Description("This test successfully create and try to edit userwith invalid email")
     @DisplayName("Test negative edit user. Invalid email")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://software-testing.ru/lms/mod/assign/view.php?id=289483")
+    @Story("Negative edit user")
     public void testEditWithInvalidEmail() {
         //Generate user
         Map<String, String> userData = DataGenerator.getRegistrationData();
@@ -182,6 +192,9 @@ public class UserEditTest extends BaseTestCase {
     @Test
     @Description("This test successfully create and try to edit user with invalid firstName")
     @DisplayName("Test negative edit user. Invalid firstName")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://software-testing.ru/lms/mod/assign/view.php?id=289483")
+    @Story("Negative edit user")
     public void testEditWithInvalidFirstName() {
         //Generate user
         Map<String, String> userData = DataGenerator.getRegistrationData();
@@ -202,6 +215,8 @@ public class UserEditTest extends BaseTestCase {
         //edit
         String newFirstName = "a";
         Map<String, String> editData = new HashMap<>();
+
+
         editData.put("firstName", newFirstName);
 
         Response responseEditUser = apiCoreRequests.makePutRequest(

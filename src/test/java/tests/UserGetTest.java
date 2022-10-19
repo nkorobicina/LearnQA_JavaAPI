@@ -1,8 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import lib.Assertions;
 import lib.BaseTestCase;
@@ -22,6 +20,9 @@ public class UserGetTest extends BaseTestCase {
     @Test
     @Description("This test get user without authorization")
     @DisplayName("Test positive get user without authorization")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://software-testing.ru/lms/mod/url/view.php?id=289471")
+    @Story("Positive get user")
     public void testGetUserDataNotAuth() {
         Response responseUserData = apiCoreRequests
                 .makeGetRequest("https://playground.learnqa.ru/api/user/2");
@@ -35,6 +36,9 @@ public class UserGetTest extends BaseTestCase {
     @Test
     @Description("This test get the same")
     @DisplayName("Test positive. Same user")
+    @Severity(SeverityLevel.CRITICAL)
+    @Link("https://software-testing.ru/lms/mod/url/view.php?id=289471")
+    @Story("Positive get user")
     public void testGetUserDetailsAuthAsSameUser() {
         Map<String, String> authData = new HashMap<>();
         authData.put("email", "vinkotov@example.com");
@@ -56,6 +60,9 @@ public class UserGetTest extends BaseTestCase {
     @Test
     @Description("This test authorize and get another user")
     @DisplayName("Test positive. Get other user")
+    @Severity(SeverityLevel.CRITICAL)
+    @Link("https://software-testing.ru/lms/mod/assign/view.php?id=2894821")
+    @Story("Positive get user")
     public void testGetOtherUser() {
         Map<String, String> authData = new HashMap<>();
         authData.put("email", "vinkotov@example.com");

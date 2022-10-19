@@ -1,8 +1,6 @@
 package tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
+import io.qameta.allure.*;
 import io.restassured.response.Response;
 import lib.Assertions;
 import lib.BaseTestCase;
@@ -25,6 +23,9 @@ public class UserRegisterTest extends BaseTestCase {
     @Test
     @Description("This test try to register user with existing email")
     @DisplayName("Test negative registration. Existing email")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://software-testing.ru/lms/mod/url/view.php?id=289469")
+    @Story("Negative register user")
     public void testCreateUserWithExistingEmail() {
         String email = "vinkotov@example.com";
         Map<String, String> userData = new HashMap<>();
@@ -41,6 +42,9 @@ public class UserRegisterTest extends BaseTestCase {
     @Test
     @Description("This test successfully register user")
     @DisplayName("Test positive registration")
+    @Link("https://software-testing.ru/lms/mod/url/view.php?id=289470")
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("Positive register user")
     public void testCreateUserSuccessfully() {
         Map<String, String> userData = DataGenerator.getRegistrationData();
 
@@ -54,6 +58,9 @@ public class UserRegisterTest extends BaseTestCase {
     @Test
     @Description("This test try to register user with invalid email")
     @DisplayName("Test negative registration. Invalid email")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://software-testing.ru/lms/mod/assign/view.php?id=289481")
+    @Story("Negative register user")
     public void testCreateUserWithInvalidEmail() {
         Map<String, String> invalidEmail = new HashMap<>();
         invalidEmail.put("email", DataGenerator.getRandomInvalidEmail());
@@ -70,6 +77,9 @@ public class UserRegisterTest extends BaseTestCase {
     @DisplayName("Test negative registration. Invalid set of fields")
     @ParameterizedTest
     @ValueSource(strings = {"email", "password", "username", "firstName", "lastName"})
+    @Severity(SeverityLevel.MINOR)
+    @Link("https://software-testing.ru/lms/mod/assign/view.php?id=289481")
+    @Story("Negative register user")
     public void testCreateUserWithInvalidSetOfFields(String fieldkey) {
         Map<String, String> userData = DataGenerator.getRegistrationDataWithoutOneField(fieldkey);
 
@@ -84,6 +94,9 @@ public class UserRegisterTest extends BaseTestCase {
     @DisplayName("Test negative registration. Short name")
     @ParameterizedTest
     @ValueSource(strings = {"username", "firstName", "lastName"})
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://software-testing.ru/lms/mod/assign/view.php?id=289481")
+    @Story("Negative register user")
     public void testCreateUserWithShortName(String name) {
         Map<String, String> userData = DataGenerator.getRegistrationDataWithShortName(name);
 
@@ -98,6 +111,9 @@ public class UserRegisterTest extends BaseTestCase {
     @DisplayName("Test negative registration. Long name")
     @ParameterizedTest
     @ValueSource(strings = {"username", "firstName", "lastName"})
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://software-testing.ru/lms/mod/assign/view.php?id=289481")
+    @Story("Negative register user")
     public void testCreateUserWithLongName(String name) {
         Map<String, String> userData = DataGenerator.getRegistrationDataWithLongName(name);
 
